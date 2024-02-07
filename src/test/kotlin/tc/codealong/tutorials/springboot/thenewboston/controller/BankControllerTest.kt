@@ -19,20 +19,31 @@ internal class BankControllerTest {
 
     @Test
     fun `should return all banks`() {
-        // when
         mockMvc.get("/api/banks")
             .andDo { print() }
             .andExpect {
                 status { isOk() }
-                content { contentType(MediaType.APPLICATION_JSON)}
+                content { contentType(MediaType.APPLICATION_JSON) }
                 jsonPath("$[0].accountNumber") {
                     value("12345")
                 }
             }
-
-        // then
-
     }
 
-
+    @Test
+    fun `should return bank with given account number`() {
+        val accountNumber = 1234
+        mockMvc.get("/api/banks/$accountNumber")
+            .andDo { print() }
+            .andExpect {
+                status { isOk() }
+                content { contentType(MediaType.APPLICATION_JSON) }
+                jsonPath("$.trust") {
+                    value("0.0")
+                }
+                jsonPath("$.transactionFee") {
+                    value("100")
+                }
+            }
+    }
 }

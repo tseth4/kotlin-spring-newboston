@@ -3,6 +3,7 @@ package tc.codealong.tutorials.springboot.thenewboston.datasource.network
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 import org.springframework.web.client.RestTemplate
+import org.springframework.web.client.getForEntity
 import tc.codealong.tutorials.springboot.thenewboston.datasource.BankDataSource
 import tc.codealong.tutorials.springboot.thenewboston.model.Bank
 
@@ -12,6 +13,7 @@ class NetworkDataSource(
 ) : BankDataSource {
     override fun retrieveBanks(): Collection<Bank> {
         TODO("Not yet implemented")
+
     }
 
     override fun retrieveBank(accountNumber: String): Bank {
